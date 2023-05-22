@@ -9,9 +9,10 @@ pip install picamera
 git clone https://github.com/AlexeyAB/darknet<br>
 cd darknet<br>
 sed -i 's/OPENCV=0/OPENCV=1/' Makefile<br>
-### enable CUDA support for darknet
+### enable CUDA support for darknet (not required)
 sed -i 's/CUDNN=0/CUDNN=1/' Makefile<br>
 sed -i 's/CUDNN_HALF=0/CUDNN_HALF=1/' Makefile<br>
+otherwise CUDNN=0, CUDNN+HALF = 0<br>
 make<br>
 ### tiny-YOLO 
 wget https://github.com/AlexeyAB/darknet/releases/download/darknet_yolo_v4_pre/yolov4-csp.weights
