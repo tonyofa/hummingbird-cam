@@ -1,33 +1,20 @@
-import picamera
-import time
-import subprocess
-import shutil
+import picamera, time
+from datetime import datetime
 
+#this just captures images with the pi
+# yolov-tiny models will run locally on the pi, but the recognition wasn't spectacular so moved the image processing from the pi to a PC (server)
 
-while 1:
-    # capture an image and save it
-    with picamera.PiCamera() as camera:
-        camera.resolution = (1024, 768)
-        time.sleep(2)  # Camera warm-up time
-        image_path = 'capture.jpg'
-        camera.capture(image_path)
+# captures images, saves locally
+camera =  picamera.PiCamera()
+camera.resolution = (3280, 2464)
+camera.rotation = 180 # if the pi image is upside down
+time.sleep(2)  # Camera warm-up time
+image_path = 'capture.jpg'
+while True:
+   
+    camera.capture(image_path)
 
-    # define the path to the darknet executable
-    darknet_path = '../darknet'
+    print(f"wrote image at {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+    time.sleep(5) # allow some time for the server to pick it up a static file - this could be a lot better but it works for the initial testing
 
-    # define the path to the config file, weights, and the class names
-    config_path = '../yolov3-tiny.cfg'
-    weights_path = '../yolov3-tiny.weights'
-    class_names_path = 'darknet/cfg/coco.names'
-
-    # run diarknet with YOLO on the image
-    command = f"{darknet_path} detector test cfg/coco.data {config_path} {weights_path} {image_path} -dont-show"
-    output = subprocess.check_output(command, shell=True)
-
-    # check the output for 'bird'
-    if 'bird' in output.decode():
-        print('Bird detected!')
-        # save the image
-        shutil.copyfile(capture.jpg, f"birds/bird_{date:%Y%m%d_%H%M%S}.jpg")
-    else:
-        print('No bird detected.')
+   
