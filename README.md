@@ -14,4 +14,4 @@ sed -i 's/CUDNN=0/CUDNN=1/' Makefile<br>
 sed -i 's/CUDNN_HALF=0/CUDNN_HALF=1/' Makefile<br>
 make<br>
 ### tiny-YOLO 
-wget https://pjreddie.com/media/files/yolov3-tiny.weights
+wget https://github.com/AlexeyAB/darknet/releases/download/darknet_yolo_v4_pre/yolov4-csp.weights
