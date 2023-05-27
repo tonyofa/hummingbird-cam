@@ -1,5 +1,5 @@
 # hummingbird-cam
-ML-driven camera for photographing a hummingbird feeder with a raspberry pi 4 (32 bit).  Using generic model yolov4 which necessitates image processing to server until a dedicated recognition model can be deployed on the raspberry pi as a standalone unit. yolov4-tiny does not do well with recognition but yolov4-csp is very good.<br>
+ML-driven camera for photographing a hummingbird feeder with a raspberry pi 4 (32 bit).  Using generic model yolov4 which necessitates image processing to server until a dedicated recognition model can be deployed on the raspberry pi as a standalone unit. yolov4-tiny does not do well with recognition but yolov4-csp is very good.  Uses standard pi 32 bit Raspian.  Demo at https://birds.tonyor.com<br>
 
 ## preparation from base OS image
 ### required packages (apt - cam and server) 
